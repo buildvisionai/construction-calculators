@@ -1,0 +1,46 @@
+{
+  "name": "@buildvision/construction-calculators",
+  "version": "1.0.0",
+  "description": "Pure TypeScript calculation functions for construction estimating — concrete, gravel, roofing, lumber, paint, flooring, and more.",
+  "license": "MIT",
+  "author": "BuildVision (https://buildvision.com)",
+  "homepage": "https://github.com/buildvision/construction-calculators#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/buildvision/construction-calculators"
+  },
+  "keywords": [
+    "construction",
+    "calculator",
+    "estimating",
+    "concrete",
+    "roofing",
+    "lumber",
+    "gravel",
+    "flooring",
+    "paint",
+    "drywall"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.7.2"
+  }
+}
