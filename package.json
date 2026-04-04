@@ -1,6 +1,6 @@
 {
   "name": "@buildvisionai/construction-calculators",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pure TypeScript calculation functions for construction estimating — concrete, gravel, roofing, lumber, paint, flooring, and more.",
   "license": "MIT",
   "author": "BuildVision (https://buildvisionai.com)",
