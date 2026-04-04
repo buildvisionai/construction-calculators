@@ -5,7 +5,7 @@
 
 Pure TypeScript functions for construction estimating calculations — no dependencies, no React, no DOM. Works in any JS/TS environment (Node, browser, Deno, edge runtimes).
 
-> **Live calculators**: [buildvision.com/calculators](https://buildvision.com/calculators)
+> **Live calculators**: [buildvisionai.com/calculators](https://buildvisionai.com/calculators)
 
 ## Install
 
@@ -111,4 +111,4 @@ All calculators accept a `units` parameter: `'imperial'` (feet, inches, lbs) or 
 
 This package is open source under the MIT license. Issues and PRs welcome on [GitHub](https://github.com/buildvisionai/construction-calculators).
 
-Built by [BuildVision](https://buildvision.com) — construction estimating software.
+Built by [BuildVision](https://buildvisionai.com) — construction estimating software.
