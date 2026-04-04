@@ -1,6 +1,6 @@
-# @buildvision/construction-calculators
+# @buildvisionai/construction-calculators
 
-[![npm version](https://badge.fury.io/js/%40buildvision%2Fconstruction-calculators.svg)](https://www.npmjs.com/package/@buildvision/construction-calculators)
+[![npm version](https://badge.fury.io/js/%40buildvisionai%2Fconstruction-calculators.svg)](https://www.npmjs.com/package/@buildvisionai/construction-calculators)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Pure TypeScript functions for construction estimating calculations — no dependencies, no React, no DOM. Works in any JS/TS environment (Node, browser, Deno, edge runtimes).
@@ -10,11 +10,11 @@ Pure TypeScript functions for construction estimating calculations — no depend
 ## Install
 
 ```bash
-npm install @buildvision/construction-calculators
+npm install @buildvisionai/construction-calculators
 # or
-yarn add @buildvision/construction-calculators
+yarn add @buildvisionai/construction-calculators
 # or
-pnpm add @buildvision/construction-calculators
+pnpm add @buildvisionai/construction-calculators
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ import {
   calculateGravel,
   calculateMarkup,
   calculateRoofingCost,
-} from '@buildvision/construction-calculators';
+} from '@buildvisionai/construction-calculators';
 
 // Concrete volume for a 20×30 ft slab, 4 inches thick
 const concrete = calculateConcrete({
@@ -109,6 +109,6 @@ All calculators accept a `units` parameter: `'imperial'` (feet, inches, lbs) or 
 
 ## Contributing
 
-This package is open source under the MIT license. Issues and PRs welcome on [GitHub](https://github.com/buildvision/construction-calculators).
+This package is open source under the MIT license. Issues and PRs welcome on [GitHub](https://github.com/buildvisionai/construction-calculators).
 
 Built by [BuildVision](https://buildvision.com) — construction estimating software.
