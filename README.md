@@ -1,17 +1,21 @@
-# @buildvisionai/construction-calculators
+# construction-calculators
 
 [![npm version](https://img.shields.io/npm/v/@buildvisionai/construction-calculators.svg)](https://www.npmjs.com/package/@buildvisionai/construction-calculators)
+[![PyPI](https://img.shields.io/pypi/v/buildvision-construction-calculators)](https://pypi.org/project/buildvision-construction-calculators/)
 [![npm downloads](https://img.shields.io/npm/dm/@buildvisionai/construction-calculators.svg)](https://www.npmjs.com/package/@buildvisionai/construction-calculators)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://www.typescriptlang.org/)
+[![Python](https://img.shields.io/pypi/pyversions/buildvision-construction-calculators)](https://pypi.org/project/buildvision-construction-calculators/)
 
-> Pure TypeScript functions for construction estimating — zero dependencies, no React, no DOM. Works in Node, browser, Deno, and edge runtimes.
+> Pure TypeScript and Python calculation libraries for construction estimating — zero dependencies. Works everywhere.
 
-Built and maintained by [BuildVision](https://buildvisionai.com) — AI-powered construction estimating software. Try the **[live calculators →](https://buildvisionai.com/calculators)**
+Built and maintained by [BuildVision](https://www.buildvisionai.com) — AI-powered construction estimating software. Try the **[live calculators →](https://www.buildvisionai.com/calculators)**
 
 ---
 
 ## Install
+
+### JavaScript / TypeScript
 
 ```bash
 npm install @buildvisionai/construction-calculators
@@ -21,9 +25,19 @@ yarn add @buildvisionai/construction-calculators
 pnpm add @buildvisionai/construction-calculators
 ```
 
+### Python
+
+```bash
+pip install buildvision-construction-calculators
+```
+
+Requires Python 3.9+. No dependencies beyond the standard library.
+
 ---
 
 ## Quick Start
+
+### TypeScript
 
 ```typescript
 import {
@@ -61,69 +75,89 @@ const roof = calculateRoofingCost({
 console.log(`$${roof.totalLow.toFixed(0)}–$${roof.totalHigh.toFixed(0)}`);
 ```
 
+### Python
+
+```python
+from construction_calculators.concrete import ConcreteInput, calculate_concrete
+
+result = calculate_concrete(ConcreteInput(
+    shape="rectangular",
+    length=20,
+    width=20,
+    depth=0.333,
+    units="imperial",
+))
+
+print(f"Volume: {result.volume_cu_ft:.1f} cu ft ({result.volume_cu_m:.2f} m³)")
+print(f"Bags needed: {result.bags_needed}")
+```
+
+```python
+from construction_calculators.markup import MarkupFromCostInput, calculate_markup
+
+result = calculate_markup(MarkupFromCostInput(costs=15_000, markup_percent=25))
+print(f"Sell: ${result.total_with_markup:,.0f}, Margin: {result.profit_margin_percent:.1f}%")
+```
+
 ---
 
 ## Calculators
 
 ### Concrete & Masonry
 
-| Function | Description | Live Demo |
-|----------|-------------|-----------|
-| `calculateConcrete` | Rectangular/circular volume, bags, sand, gravel, water | [Concrete Calculator](https://buildvisionai.com/calculators/concrete-calculator) |
-| `calculateConcreteSlab` | Slab volume, 60/80lb bags, ready-mix trucks, rebar | [Concrete Slab Calculator](https://buildvisionai.com/calculators/concrete-slab-calculator) |
-| `calculateConcreteBlock` | CMU block count, mortar bags, cost estimate | [Concrete Block Calculator](https://buildvisionai.com/calculators/concrete-block-calculator) |
-| `calculateRetainingWall` | Block courses, backfill volume, drainage, geogrid layers | [Retaining Wall Calculator](https://buildvisionai.com/calculators/retaining-wall-calculator) |
+| Calculator | Description | Live Demo |
+|------------|-------------|-----------|
+| Concrete | Rectangular/circular volume, bags, sand, gravel, water | [Concrete Calculator](https://www.buildvisionai.com/calculators/concrete-calculator) |
+| Concrete Slab | Slab volume, 60/80lb bags, ready-mix trucks, rebar | [Concrete Slab Calculator](https://www.buildvisionai.com/calculators/concrete-slab-calculator) |
+| Concrete Block | CMU block count, mortar bags, cost estimate | [Concrete Block Calculator](https://www.buildvisionai.com/calculators/concrete-block-calculator) |
+| Retaining Wall | Block courses, backfill volume, drainage, geogrid layers | [Retaining Wall Calculator](https://www.buildvisionai.com/calculators/retaining-wall-calculator) |
 
 ### Materials & Aggregates
 
-| Function | Description | Live Demo |
-|----------|-------------|-----------|
-| `calculateGravel` | Volume, tonnage, 50lb bags, cost | [Gravel Calculator](https://buildvisionai.com/calculators/gravel-calculator) |
-| `calculateBoardFoot` | Lumber board feet, cubic meters, weight | [Board Foot Calculator](https://buildvisionai.com/calculators/board-foot-calculator) |
-| `calculateInsulation` | R-value thickness, rolls/bags by insulation type, cost | [Insulation Calculator](https://buildvisionai.com/calculators/insulation-calculator) |
-| `calculatePavers` | Paver count + waste, sand bed, gravel base | [Paver Calculator](https://buildvisionai.com/calculators/paver-calculator) |
+| Calculator | Description | Live Demo |
+|------------|-------------|-----------|
+| Gravel | Volume, tonnage, 50lb bags, cost | [Gravel Calculator](https://www.buildvisionai.com/calculators/gravel-calculator) |
+| Board Foot | Lumber board feet, cubic meters, weight | [Board Foot Calculator](https://www.buildvisionai.com/calculators/board-foot-calculator) |
+| Insulation | R-value thickness, rolls/bags by insulation type, cost | [Insulation Calculator](https://www.buildvisionai.com/calculators/insulation-calculator) |
+| Paver | Paver count + waste, sand bed, gravel base | [Paver Calculator](https://www.buildvisionai.com/calculators/paver-calculator) |
 
 ### Interior Finishes
 
-| Function | Description | Live Demo |
-|----------|-------------|-----------|
-| `calculateDrywall` | Sheets, tape rolls, compound buckets, screws | [Drywall Calculator](https://buildvisionai.com/calculators/drywall-calculator) |
-| `calculateFlooring` | Planks/boxes, underlayment, transition strips, cost | [Flooring Calculator](https://buildvisionai.com/calculators/flooring-calculator) |
-| `calculatePaint` | Gallons, primer, cost range, time estimate | [Paint Calculator](https://buildvisionai.com/calculators/paint-calculator) |
+| Calculator | Description | Live Demo |
+|------------|-------------|-----------|
+| Drywall | Sheets, tape rolls, compound buckets, screws | [Drywall Calculator](https://www.buildvisionai.com/calculators/drywall-calculator) |
+| Flooring | Planks/boxes, underlayment, transition strips, cost | [Flooring Calculator](https://www.buildvisionai.com/calculators/flooring-calculator) |
+| Paint | Gallons, primer, cost range, time estimate | [Paint Calculator](https://www.buildvisionai.com/calculators/paint-calculator) |
 
 ### Roofing
 
-| Function | Description | Live Demo |
-|----------|-------------|-----------|
-| `calculateRoofMaterials` | Shingle bundles, accessories, bid price, gross margin | [Roof Calculator](https://buildvisionai.com/calculators/roof-calculator) |
-| `calculateRoofingCost` | Installed cost by material, region, pitch, stories | [Roofing Cost Calculator](https://buildvisionai.com/calculators/roofing-cost-calculator) |
-| `calculateMetalRoofCost` | Metal roof cost + 50-year vs asphalt comparison | [Metal Roof Cost Calculator](https://buildvisionai.com/calculators/metal-roof-cost-calculator) |
-| `pitchFromRiseRun` | Angle and percent from rise/run | [Roof Pitch Calculator](https://buildvisionai.com/calculators/roof-pitch-calculator) |
-| `pitchFromAngle` | Rise/run from pitch angle | [Roof Pitch Calculator](https://buildvisionai.com/calculators/roof-pitch-calculator) |
-| `pitchFromPercent` | Rise/run from slope percent | [Roof Pitch Calculator](https://buildvisionai.com/calculators/roof-pitch-calculator) |
-| `calculateRafterLength` | Rafter length from pitch and half-span | [Roof Pitch Calculator](https://buildvisionai.com/calculators/roof-pitch-calculator) |
+| Calculator | Description | Live Demo |
+|------------|-------------|-----------|
+| Roof Materials | Shingle bundles, accessories, bid price, gross margin | [Roof Calculator](https://www.buildvisionai.com/calculators/roof-calculator) |
+| Roofing Cost | Installed cost by material, region, pitch, stories | [Roofing Cost Calculator](https://www.buildvisionai.com/calculators/roofing-cost-calculator) |
+| Metal Roof Cost | Metal roof cost + 50-year vs asphalt comparison | [Metal Roof Cost Calculator](https://www.buildvisionai.com/calculators/metal-roof-cost-calculator) |
+| Roof Pitch | Angle, percent, and rafter length from rise/run | [Roof Pitch Calculator](https://www.buildvisionai.com/calculators/roof-pitch-calculator) |
 
 ### Structures & Exterior
 
-| Function | Description | Live Demo |
-|----------|-------------|-----------|
-| `calculateSquareFootage` | Multi-room area for rectangle, square, circle shapes | [Square Footage Calculator](https://buildvisionai.com/calculators/square-footage-calculator) |
-| `calculateFence` | Posts, rails, pickets, panels, concrete bags, cost | [Fence Calculator](https://buildvisionai.com/calculators/fence-calculator) |
-| `calculateStairs` | Step count, rise/run, stringer length, angle | [Stair Calculator](https://buildvisionai.com/calculators/stair-calculator) |
-| `calculateDeckCost` | Boards, joists, posts, footings, railing, installed cost | [Deck Cost Calculator](https://buildvisionai.com/calculators/deck-cost-calculator) |
+| Calculator | Description | Live Demo |
+|------------|-------------|-----------|
+| Square Footage | Multi-room area for rectangle, square, circle shapes | [Square Footage Calculator](https://www.buildvisionai.com/calculators/square-footage-calculator) |
+| Fence | Posts, rails, pickets, panels, concrete bags, cost | [Fence Calculator](https://www.buildvisionai.com/calculators/fence-calculator) |
+| Stairs | Step count, rise/run, stringer length, angle | [Stair Calculator](https://www.buildvisionai.com/calculators/stair-calculator) |
+| Deck Cost | Boards, joists, posts, footings, railing, installed cost | [Deck Cost Calculator](https://www.buildvisionai.com/calculators/deck-cost-calculator) |
 
 ### Business & Finance
 
-| Function | Description | Live Demo |
-|----------|-------------|-----------|
-| `calculateMarkup` | Selling price and profit margin from cost + markup % | [Markup Calculator](https://buildvisionai.com/calculators/markup-calculator) |
-| `calculateMarkupFromMargin` | Required markup % to hit a target profit margin | [Markup Calculator](https://buildvisionai.com/calculators/markup-calculator) |
-| `calculateLaborCost` | Total labor cost with payroll burden multiplier | [Labor Cost Calculator](https://buildvisionai.com/calculators/labor-cost-calculator) |
-| `calculateHourlyRate` | Billable rate from annual expenses + profit margin | [Hourly Rate Calculator](https://buildvisionai.com/calculators/hourly-rate-calculator) |
-| `calculateNetProfit` | Projects/month needed to hit annual profit goal | [Net Profit Calculator](https://buildvisionai.com/calculators/net-profit-calculator) |
-| `calculateConstructionCost` | Line-item cost roll-up by category (materials/labor/equipment) | [Construction Cost Calculator](https://buildvisionai.com/calculators/construction-cost-calculator) |
-| `calculateEquipmentDepreciation` | 4-method schedule: straight-line, declining balance, SYD, DDB | [Equipment Depreciation Calculator](https://buildvisionai.com/calculators/equipment-depreciation-calculator) |
-| `calculateTimeline` | Critical path method (CPM) — earliest/latest start, float | [Timeline Calculator](https://buildvisionai.com/calculators/timeline-calculator) |
+| Calculator | Description | Live Demo |
+|------------|-------------|-----------|
+| Markup | Selling price and profit margin from cost + markup % | [Markup Calculator](https://www.buildvisionai.com/calculators/markup-calculator) |
+| Labor Cost | Total labor cost with payroll burden multiplier | [Labor Cost Calculator](https://www.buildvisionai.com/calculators/labor-cost-calculator) |
+| Hourly Rate | Billable rate from annual expenses + profit margin | [Hourly Rate Calculator](https://www.buildvisionai.com/calculators/hourly-rate-calculator) |
+| Net Profit | Projects/month needed to hit annual profit goal | [Net Profit Calculator](https://www.buildvisionai.com/calculators/net-profit-calculator) |
+| Construction Cost | Line-item cost roll-up by category | [Construction Cost Calculator](https://www.buildvisionai.com/calculators/construction-cost-calculator) |
+| Equipment Depreciation | 4-method schedule: straight-line, DDB, SYD | [Equipment Depreciation Calculator](https://www.buildvisionai.com/calculators/equipment-depreciation-calculator) |
+| Timeline | Critical path method (CPM) — earliest/latest start, float | [Timeline Calculator](https://www.buildvisionai.com/calculators/timeline-calculator) |
 
 ---
 
@@ -131,22 +165,21 @@ console.log(`$${roof.totalLow.toFixed(0)}–$${roof.totalHigh.toFixed(0)}`);
 
 All functions accept a `units` parameter — `'imperial'` or `'metric'`. Outputs include both unit variants where relevant.
 
-```typescript
-// Imperial: feet, inches, lbs, gallons
-calculateConcrete({ ..., units: 'imperial' })
-
-// Metric: meters, cm/mm, kg, liters
-calculateConcrete({ ..., units: 'metric' })
-```
-
 ---
+
+## Packages
+
+| Package | Registry | Docs |
+|---------|----------|------|
+| [`@buildvisionai/construction-calculators`](https://www.npmjs.com/package/@buildvisionai/construction-calculators) | npm | [TypeScript API](https://www.buildvisionai.com/calculators) |
+| [`buildvision-construction-calculators`](https://pypi.org/project/buildvision-construction-calculators/) | PyPI | [Python API](https://www.buildvisionai.com/calculators) |
 
 ## Design Principles
 
-- **Pure functions** — input object in, result object out, no side effects
+- **Pure functions** — input in, result out, no side effects
 - **Zero dependencies** — nothing to audit, nothing to break
-- **TypeScript first** — full types on all inputs and outputs
-- **Dual ESM + CJS** — works in any JS environment
+- **Fully typed** — TypeScript types and Python dataclasses
+- **Universal** — works in Node, browser, Deno, edge runtimes (TS) and Python 3.9+ (Python)
 
 ---
 
@@ -156,4 +189,10 @@ PRs welcome. Good areas to expand: HVAC load, electrical, plumbing, sitework, ea
 
 ---
 
-Built by [BuildVision](https://buildvisionai.com) — construction estimating software for the modern contractor.
+## License
+
+MIT — see [LICENSE](LICENSE).
+
+---
+
+Built by [BuildVision](https://www.buildvisionai.com) — AI-powered [construction estimating software](https://www.buildvisionai.com) for the modern contractor.

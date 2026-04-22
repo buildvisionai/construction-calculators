@@ -1,0 +1,60 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "buildvision-construction-calculators"
+version = "1.0.0"
+description = "Pure-Python construction calculation library: concrete, roofing, lumber, labor costs, depreciation, and more."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "BuildVision", email = "hello@buildvisionai.com" }
+]
+keywords = [
+    "construction",
+    "calculators",
+    "estimating",
+    "contractor",
+    "concrete",
+    "roofing",
+    "lumber",
+    "board-foot",
+    "takeoff",
+    "labor-cost",
+    "depreciation",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Office/Business :: Financial :: Accounting",
+    "Typing :: Typed",
+]
+requires-python = ">=3.9"
+dependencies = []
+
+[project.urls]
+Homepage = "https://www.buildvisionai.com"
+Documentation = "https://www.buildvisionai.com/calculators"
+Repository = "https://github.com/buildvisionai/construction-calculators"
+"Bug Tracker" = "https://github.com/buildvisionai/construction-calculators/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["construction_calculators"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/construction_calculators",
+    "/README.md",
+    "/LICENSE",
+]
